@@ -1,9 +1,4 @@
-emnekoder = ['DAT120','MAT100','KJE101','FYS120','DAT130']
-tiden= ['høst','høst','høst','høst','vår']
-studiepoenger = [10,10,5,5,10]
-
-
-studieplan = [[] for _ in range(6)]
+from data import emnekoder, tiden, studiepoenger, studieplan
 
 
 def leg_til_emne_i_stidueplan(emne_index, semester):
@@ -25,7 +20,7 @@ def leg_til_emne_i_stidueplan(emne_index, semester):
 
 
     total_studiepoeng = sum(studiepoenger[i] for i in studieplan[semester_index])
-    if total_studiepoeng + studiepoenger[emne_index] > 30:
+    if total_studiepoeng + int(studiepoenger[emne_index]) > 30:
         print(f'Feil: for mye studiepoeg i semester {semester}, total studiepoeg er {total_studiepoeng}/30 poeg.')
         return False
         
@@ -36,44 +31,23 @@ def leg_til_emne_i_stidueplan(emne_index, semester):
 
 
 
-#test
-result1 = leg_til_emne_i_stidueplan(0,1)
-print(result1,'\n')
-result1 = leg_til_emne_i_stidueplan(4,2)
-print(result1,'\n')
-result1 = leg_til_emne_i_stidueplan(3,1)
-print(result1,'\n')
-result1 = leg_til_emne_i_stidueplan(1,2)
-print(result1,'\n')
-result1 = leg_til_emne_i_stidueplan(0,3)
-print(result1,'\n')
+def vis_emner():
+    for i, kode in enumerate(emnekoder):
+        print(f'{i}: {kode}, {tiden[i]}, {studiepoenger[i]}')
 
 
 
+def vis_studieplan():
+     print('\nStudieplan:')
 
-
-#--------------------------------------------------------------------------------------------------------------------------
-
-def lag_nytt_emne(emne, tid, studiepoeng):
-    emnekoder.append(emne)
-    tiden.append(tid)
-    studiepoenger.append(studiepoeng)
-    print(f'Emne {emne} lagt til i studieplanen.')
-
-
-#test
-lag_nytt_emne('MAT200', 'vår', '10')
-print(f'Nye emner: {emnekoder}')
-print(f'Antall emner: {len(emnekoder)}.')
-
-
-
-print('\n')
-print(leg_til_emne_i_stidueplan(1,1))
-print(leg_til_emne_i_stidueplan(2,1))
-print(studieplan)
-lag_nytt_emne('TN110','høst',5)
-print(leg_til_emne_i_stidueplan(6,1))
-
-
+     for i, sem in enumerate(studieplan, start=1):
+            if sem:
+                print(f'\nSemester {i}:')
+                total_studiepoenger = sum(studiepoenger[idx] for idx in sem)
+                for idx in sem:
+                    print(f' - {emnekoder[idx]} ({tiden[idx]}, {studiepoenger[idx]} studiepoenger)')
+                print(f'Total: {total_studiepoenger} studiepoeng') 
+        
+            else:
+                 print(f'\nSemester {i}: ingen emner')
 
