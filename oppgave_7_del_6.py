@@ -21,8 +21,12 @@ def lagre_studieplan_til_fil(filnavn="studieplan.txt"):
             f.write("\n")
     print(f"Studieplanen er lagret til '{filnavn}'.")
 
-def lese_studieplan_til_fill (fillnavn = "studieplan.txt"):
+def lese_studieplan_fra_fill (fillnavn = "studieplan.txt"):
      with open(fillnavn, "r", encoding="utf-8") as f:
-          print(f.read())
-          return f.read()
-     
+          read = f.read()
+          print(read)
+          return read
+
+lagre_studieplan_til_fil()
+
+lese_studieplan_fra_fill()
