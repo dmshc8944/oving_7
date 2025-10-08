@@ -1,0 +1,24 @@
+=== Emner ===
+DAT120 (høst) - 10 studiepoeng
+MAT100 (høst) - 10 studiepoeng
+MAT100 (vår) - 10 studiepoeng
+
+=== Studieplan ===
+Semester 1:
+  - DAT120
+
+Semester 2:
+  - MAT100
+
+Semester 3:
+  (ingen emner)
+
+Semester 4:
+  (ingen emner)
+
+Semester 5:
+  (ingen emner)
+
+Semester 6:
+  (ingen emner)
+

@@ -1,6 +1,24 @@
 from data import emnekoder, tiden, studiepoenger, studieplan
 
 
+
+def sjekk_studiepoeng(emne_index, semester):
+    """
+    Sjekker om total studiepoeng i semester + dette emnet overstiger 30.
+    Returnerer True hvis det er for mye, ellers False.
+    """
+    semester_index = semester - 1
+    total_studiepoeng = sum(studiepoenger[i] for i in studieplan[semester_index])
+
+    if total_studiepoeng + studiepoenger[emne_index] > 30:
+        print(f'Feil: for mye studiepoeng i semester {semester}. Total: {total_studiepoeng}/30 poeng.')
+        return True  # for mye poeng
+    return False  # OK
+
+
+
+
+
 def leg_til_emne_i_stidueplan(emne_index, semester):
     semester_index = semester - 1
     emne_tid = tiden[emne_index]
@@ -19,10 +37,7 @@ def leg_til_emne_i_stidueplan(emne_index, semester):
         
 
 
-    total_studiepoeng = sum(studiepoenger[i] for i in studieplan[semester_index])
-    if total_studiepoeng + int(studiepoenger[emne_index]) > 30:
-        print(f'Feil: for mye studiepoeg i semester {semester}, total studiepoeg er {total_studiepoeng}/30 poeg.')
-        return True
+    
         
 
     studieplan[semester_index].append(emne_index)
@@ -33,7 +48,7 @@ def leg_til_emne_i_stidueplan(emne_index, semester):
 
 def vis_emner():
     for i, kode in enumerate(emnekoder):
-        print(f'{i}: {kode}, {tiden[i]}, {studiepoenger[i]}')
+        print(f'Nummer {i}: kode: {kode}, tid: {tiden[i]}, studepoeng: {studiepoenger[i]}')
 
 
 
