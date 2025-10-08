@@ -48,7 +48,7 @@ def leg_til_emne_i_stidueplan(emne_index, semester):
 
 def vis_emner():
     for i, kode in enumerate(emnekoder):
-        print(f'{i}: {kode}, {tiden[i]}, {studiepoenger[i]}')
+        print(f'Nummer {i}: kode: {kode}, tid: {tiden[i]}, studepoeng: {studiepoenger[i]}')
 
 
 
