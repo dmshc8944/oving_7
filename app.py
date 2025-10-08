@@ -1,6 +1,9 @@
 # app.py
 from nytt_emne import lag_nytt_emne
-from lig_til_emne import leg_til_emne_i_stidueplan
+from lig_til_emne import leg_til_emne_i_stidueplan, vis_studieplan, vis_emner
+
+
+
 
 def vis_meny():
     print("\n=== Studieplan-meny ===")
@@ -17,25 +20,25 @@ def run():
     while True:
         vis_meny()
         valg = input("Velg (1-8): ").strip()
+
         if valg == "1":
             lag_nytt_emne()
+
         elif valg == "2":
-            leg_til_emne_i_stidueplan()
-        elif valg == "3":
-            leg_til_emne_i_stidueplan()
-        elif valg == "4":
-            leg_til_emne_i_stidueplan()
-        elif valg == "5":
-            leg_til_emne_i_stidueplan()
-        elif valg == "6":
-            leg_til_emne_i_stidueplan()
-        elif valg == "7":
-            leg_til_emne_i_stidueplan()                
+            vis_emner()
+            emne_index = int(input('Velg emne med nummer: '))
+            semester = int(input('Velg semester(1-6): '))
+            leg_til_emne_i_stidueplan(emne_index, semester)
+        
+        elif valg == '3':
+            vis_emner()
+        elif valg == '4':
+            vis_studieplan()
+        
         elif valg == "8":
             print("Ha det!")
             break
         else:
-            print("Velg (1-8)")
             continue
 
 
